@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:include="layout :: page">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+<div class="row" th:fragment="content">
+    <div class="col-md-offset-3 col-md-6">
+        <form class="form-horizontal" th:object="${userEntity}" method="POST" th:action="@{/sign/up}">
+
+            <div class="form-group" th:classappend="${#fields.hasErrors('login')} ? has-error : form-group">
+                <label for="login" class="col-md-3 control-label" th:text="#{login}"></label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" th:field="*{login}" id="login" th:placeholder="#{login}">
+                    <span id="helpBlock" class="help-block" th:errors="*{login}" th:if="${#fields.hasErrors('login')}">
+                        A block of help text that breaks onto a new line and may extend beyond one line.
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group" th:classappend="#{$fields.hasErrors('password')} ? has-error : form-group">
+                <label for="password" class="col-md-3 control-label" th:text="#{password}"></label>
+                <div class="col-md-9">
+                    <input type="password" class="form-control" id="password" name="password" th:placeholder="#{password}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-md-3 control-label" th:text="#{name}"></label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" id="name" th:field="*{name}" th:placeholder="#{name}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="country" class="col-md-3 control-label" th:text="#{country}"></label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" id="country" th:field="*{country}" th:placeholder="#{country}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sex" class="col-md-3 control-label" th:text="#{sex}"></label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" id="sex" th:field="*{sex}" th:placeholder="#{sex}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="birthday" class="col-md-3 control-label" th:text="#{birthday}"></label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" id="birthday" th:field="*{birthday}" th:placeholder="#{birthday}">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-9">
+                    <button type="submit" class="btn btn-default" th:text="#{sign.up}"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
