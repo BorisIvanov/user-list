@@ -1,5 +1,7 @@
 package user.list.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
@@ -11,11 +13,12 @@ public class UserEntity {
     @NotNull
     @Size(min = 6, max = 16)
     private String password;
-    @Size(min = 2, max = 30)
+    @Size(max = 30)
     private String name;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate birthday;
-    private String sex;
-    @Size(min = 2, max = 30)
+    private byte sex;
+    @Size(max = 30)
     private String country;
 
     public String getLogin() {
@@ -50,11 +53,11 @@ public class UserEntity {
         this.birthday = birthday;
     }
 
-    public String getSex() {
+    public byte getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(byte sex) {
         this.sex = sex;
     }
 

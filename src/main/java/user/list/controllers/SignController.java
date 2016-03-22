@@ -2,9 +2,6 @@ package user.list.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import user.list.entity.UserEntity;
@@ -32,7 +29,6 @@ public class SignController {
 
     @RequestMapping(value = "/up", method = RequestMethod.POST)
     public String upPost(@Valid UserEntity userEntity, BindingResult bindingResult) throws Exception {
-        //@ModelAttribute
         if (bindingResult.hasErrors()) {
             return "sign/up";
         }
