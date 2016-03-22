@@ -42,24 +42,19 @@
             <div class="form-group" th:classappend="${#fields.hasErrors('sex')} ? has-error : null">
                 <label class="col-md-3 control-label" th:text="#{sex}"></label>
                 <div class="col-md-9">
-                    <!--
-                    <input type="text" class="form-control" id="sex" th:field="*{sex}" th:placeholder="#{sex}">
-                    <span class="help-block" th:errors="*{sex}" th:if="${#fields.hasErrors('sex')}"></span>
--->
                     <label class="radio-inline">
-                        <input type="radio" name="sex" value="0"> M
+                        <input type="radio" name="sex" value="0"><span th:text="#{sex.m}"></span>
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="sex" value="1"> F
+                        <input type="radio" name="sex" value="1"><span th:text="#{sex.f}"></span>
                     </label>
-
                 </div>
             </div>
             <div class="form-group" th:classappend="${#fields.hasErrors('birthday')} ? has-error : null">
                 <label for="birthday" class="col-md-3 control-label" th:text="#{birthday}"></label>
                 <div class="col-md-9">
                     <input type="date" class="form-control" id="birthday" th:field="*{birthday}" th:placeholder="#{birthday}">
-                    <span class="help-block" th:errors="*{birthday}" th:if="${#fields.hasErrors('birthday')}"></span>
+                    <span class="help-block" th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}"></span>
                 </div>
             </div>
             <div class="form-group">

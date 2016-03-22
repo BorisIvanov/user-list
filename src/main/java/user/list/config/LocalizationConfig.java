@@ -27,7 +27,7 @@ public class LocalizationConfig extends WebMvcConfigurerAdapter {
     public LocaleResolver localeResolver() {
         CookieLocaleResolver resolver = new CookieLocaleResolver();
         resolver.setDefaultLocale(new Locale("en"));
-        resolver.setCookieName("myLocaleCookie");
+        resolver.setCookieName("lang");
         resolver.setCookieMaxAge(4800);
         return resolver;
     }
@@ -35,7 +35,7 @@ public class LocalizationConfig extends WebMvcConfigurerAdapter {
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
         LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
-        interceptor.setParamName("mylocale");
+        interceptor.setParamName("lang");
         return interceptor;
     }
 

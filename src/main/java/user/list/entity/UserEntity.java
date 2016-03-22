@@ -2,11 +2,20 @@ package user.list.entity;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
+@Entity
 public class UserEntity {
+    @Id
+    @GeneratedValue
+    Long id;
+    @Column(unique = true)
     @NotNull
     @Size(min = 6, max = 16)
     private String login;
@@ -20,6 +29,14 @@ public class UserEntity {
     private byte sex;
     @Size(max = 30)
     private String country;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getLogin() {
         return login;

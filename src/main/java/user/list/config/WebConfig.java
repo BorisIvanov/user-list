@@ -1,15 +1,11 @@
 package user.list.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.converter.FormHttpMessageConverter;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -20,11 +16,11 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
 
-import java.util.List;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {"user.list"})
+@PropertySource("classpath:application.properties")
 public class WebConfig extends WebMvcConfigurerAdapter {
     @Autowired
     private MessageSource messageSource;
@@ -64,7 +60,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         templateResolver.setCacheable(false);
         return templateResolver;
     }
-
+/*
     @Bean
     public JacksonAnnotationIntrospector jacksonAnnIntrospector() {
         return new JacksonAnnotationIntrospector();
@@ -78,7 +74,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         result.getDeserializationConfig().withInsertedAnnotationIntrospector(jacksonAnnIntrospector());
         //result.registerModule(new JavaTimeModule());
         return result;
-    }
+    }*/
 /*
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
