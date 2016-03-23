@@ -10,6 +10,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import user.list.entity.UserEntity;
 import user.list.repositories.UserRepository;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -24,7 +25,7 @@ public class SignController {
     }
 
     @RequestMapping("/in")
-    public String in() {
+    public String in(HttpServletRequest request) {
         return "sign/in";
     }
 
@@ -39,7 +40,8 @@ public class SignController {
     }
 
     @RequestMapping(value = "/up", method = RequestMethod.POST)
-    public String upPost(@Valid UserEntity userEntity, BindingResult bindingResult, RedirectAttributes model)
+    public String upPost(@Valid UserEntity userEntity, BindingResult bindingResult, RedirectAttributes model,
+                         HttpServletRequest request)
             throws Exception {
         if (bindingResult.hasErrors()) {
             return "sign/up";
