@@ -54,6 +54,7 @@
                 <label for="birthday" class="col-md-3 control-label" th:text="#{birthday}"></label>
                 <div class="col-md-9">
                     <input type="date" class="form-control" id="birthday" th:field="*{birthday}" th:placeholder="#{birthday}">
+                    <span class="help-block" th:text="#{birthday.format}"></span>
                     <span class="help-block" th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}"></span>
                 </div>
             </div>
