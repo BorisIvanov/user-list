@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:include="layout :: page">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+<section th:fragment="content">
+
+    <div class="row">
+        <div class="col-md-12">
+            <table>
+                <tr>
+                    <th>NAME</th>
+                    <th>PRICE</th>
+                    <th>IN STOCK</th>
+                </tr>
+                <tr th:each="user : ${userList}">
+                    <td th:text="${user.login}"></td>
+                    <td th:text="${user.name}"></td>
+                    <td th:text="${user.birthday}"></td>
+                    <td th:text="${user.sex}"></td>
+                    <td th:text="${user.country}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>

@@ -11,6 +11,7 @@ import user.list.entity.UserDtoItem;
 import user.list.services.UserService;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/sign")
@@ -23,8 +24,8 @@ public class SignController {
         this.userService = userService;
     }
 
-    @RequestMapping("/in")
-    public String in() {
+    @RequestMapping(value = "/in", method = RequestMethod.GET)
+    public String in(Principal principal) {
         return "sign/in";
     }
 

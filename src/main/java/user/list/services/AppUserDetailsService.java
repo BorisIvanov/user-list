@@ -2,6 +2,9 @@ package user.list.services;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,6 +16,7 @@ import user.list.repositories.UserRepository;
 @Service
 public class AppUserDetailsService implements UserService {
 
+    private final int PAGE_SIZE = 10;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -42,5 +46,11 @@ public class AppUserDetailsService implements UserService {
     @Override
     public UserEntity readByLogin(String login) {
         return userRepository.readByLogin(login);
+    }
+
+
+    public Page<UserEntity> list(int pageNumber){
+        PageRequest pageRequest = new PageRequest(pageNumber - 1, PAGE_SIZE, Sort.Direction.DESC, "login");
+        return userRepository.findAll(pageRequest);
     }
 }
