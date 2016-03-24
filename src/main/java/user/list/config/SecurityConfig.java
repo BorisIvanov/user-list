@@ -32,8 +32,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/sign/in")
+                .defaultSuccessUrl("/user/list")
                 .usernameParameter("login")
-                .passwordParameter("password");
+                .passwordParameter("password")
+                .and()
+                .exceptionHandling()
+                .accessDeniedPage("/403");
     }
 
     @Bean

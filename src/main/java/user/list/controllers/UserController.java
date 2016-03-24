@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import user.list.entity.UserEntity;
 import user.list.services.UserService;
 
-import java.security.Principal;
 import java.util.Optional;
 
 @Controller
@@ -33,14 +32,11 @@ public class UserController {
         }
         Page<UserEntity> pageUserEntity = userService.list(page);
 
-        int current = pageUserEntity.getNumber() + 1;
-        int begin = Math.max(1, current - 5);
-        int end = Math.min(begin + 10, pageUserEntity.getTotalPages());
-
         model.addAttribute("userList", pageUserEntity);
-        model.addAttribute("beginIndex", begin);
-        model.addAttribute("endIndex", end);
-        model.addAttribute("currentIndex", current);
+        model.addAttribute("prevPage", pageUserEntity.getNumber() - 1);
+        model.addAttribute("nextPage", pageUserEntity.getNumber() + 1);
+        model.addAttribute("firstDisable", pageUserEntity.getNumber() == 0);
+        model.addAttribute("lastDisable", pageUserEntity.getNumber() == pageUserEntity.getTotalPages() - 1);
 
         return "user/list";
     }

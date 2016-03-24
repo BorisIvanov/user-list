@@ -16,7 +16,6 @@ import user.list.repositories.UserRepository;
 @Service
 public class AppUserDetailsService implements UserService {
 
-    private final int PAGE_SIZE = 10;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -49,8 +48,9 @@ public class AppUserDetailsService implements UserService {
     }
 
 
-    public Page<UserEntity> list(int pageNumber){
-        PageRequest pageRequest = new PageRequest(pageNumber - 1, PAGE_SIZE, Sort.Direction.DESC, "login");
+    public Page<UserEntity> list(int pageNumber) {
+        int pageSize = 10;
+        PageRequest pageRequest = new PageRequest(pageNumber - 1, pageSize, Sort.Direction.ASC, "login");
         return userRepository.findAll(pageRequest);
     }
 }

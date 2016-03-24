@@ -26,6 +26,9 @@ public class SignController {
 
     @RequestMapping(value = "/in", method = RequestMethod.GET)
     public String in(Principal principal) {
+        if (principal != null) {
+            return "redirect:/user/list";
+        }
         return "sign/in";
     }
 

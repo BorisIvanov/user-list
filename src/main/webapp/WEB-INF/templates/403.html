@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:include="layout :: page">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<section th:fragment="content">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 th:text="#{access.is.denied}"></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <a th:href="@{/}" class="btn btn-success" role="button" th:text="#{main.page}"></a>
+        </div>
+    </div>
+</section>
+</body>
+</html>

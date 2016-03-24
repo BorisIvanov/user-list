@@ -1,6 +1,7 @@
 package user.list.handler;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -14,6 +15,9 @@ public class AppExceptionHandler {
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     public String handleError404(NoHandlerFoundException e) {
+        if (e.getRequestURL().endsWith("/403")) {
+            return "403";
+        }
         return "404";
     }
 
