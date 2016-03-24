@@ -10,7 +10,7 @@
 <section th:fragment="content">
 
     <div class="row" th:if="${info!=null}">
-        <div class="col-md-offset-3 col-md-6">
+        <div class="col-md-offset-2 col-md-8">
             <div class="alert alert-success" role="alert">
                 <strong th:text="#{${info}}"></strong>
             </div>
@@ -19,18 +19,17 @@
 
     <div class="row">
         <div class="col-md-6">
-            <form class="form-horizontal">
-                <input type="hidden" th2:name="${_csrf.parameterName}" th2:value="${_csrf.token}" />
+            <form class="form-horizontal" method="POST" th:action="@{/sign/in}">
                 <div class="form-group">
                     <label for="login" class="col-md-3 control-label" th:text="#{login}"></label>
                     <div class="col-md-9">
-                        <input type="text" class="form-control" id="login" th:placeholder="#{login}">
+                        <input type="text" class="form-control" id="login" name="login" th:placeholder="#{login}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="password" class="col-md-3 control-label" th:text="#{password}"></label>
                     <div class="col-md-9">
-                        <input type="password" class="form-control" id="password" th:placeholder="#{password}">
+                        <input type="password" class="form-control" id="password" name="password" th:placeholder="#{password}">
                     </div>
                 </div>
                 <div class="form-group">

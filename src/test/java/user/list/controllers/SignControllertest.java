@@ -24,6 +24,8 @@ import user.list.repositories.UserRepository;
 import java.util.List;
 
 import static org.junit.Assert.assertTrue;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -41,14 +43,15 @@ public class SignControllerTest {
     @Before
     public void before() {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).
-                //apply(springSecurity()).
-                        dispatchOptions(true).build();
+                apply(springSecurity()).
+                dispatchOptions(true).build();
     }
 
     @Test
     public void upSuccess() throws Exception {
         MockHttpServletRequestBuilder builder = MockMvcRequestBuilders
                 .post("/sign/up/")
+                .with(csrf())
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE);
         builder.param("login", "awesome-login");
         builder.param("password", "password");
@@ -57,14 +60,15 @@ public class SignControllerTest {
         builder.param("sex", "0");
         builder.param("country", "country");
         ResultActions resultActions = mockMvc.perform(builder);
-        resultActions.andExpect(MockMvcResultMatchers.status().isOk());
+        //resultActions.andDo(MockMvcResultHandlers.print());
+        resultActions.andExpect(MockMvcResultMatchers.status().is(302));
 
         List<UserEntity> userList = userRepository.findAll();
         assertTrue(userList.size() == 1);
 
         resultActions = mockMvc.perform(builder);
-        resultActions.andExpect(MockMvcResultMatchers.status().isOk());
         //resultActions.andDo(MockMvcResultHandlers.print());
+        resultActions.andExpect(MockMvcResultMatchers.status().isOk());
 
         userList = userRepository.findAll();
         assertTrue(userList.size() == 1);
