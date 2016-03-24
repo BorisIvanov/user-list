@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:include="layout :: page">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+<section th:fragment="content">
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-condensed">
+                <tr>
+                    <th th:text="#{login}"></th>
+                    <th th:text="#{name}"></th>
+                    <th th:text="#{birthday}"></th>
+                    <th th:text="#{sex}"></th>
+                    <th th:text="#{country}"></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="find-login" th:placeholder="#{login}">
+                        </div>
+                    </th>
+                    <th>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="find-name" th:placeholder="#{name}">
+                        </div>
+                    </th>
+                    <th>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="find-birthday" th:placeholder="#{birthday}">
+                        </div>
+                    </th>
+                    <th>
+                        <div class="form-group">
+                            <select class="form-control" id="find-sex">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="find-country" th:placeholder="#{country}">
+                        </div>
+                    </th>
+                    <th>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary" id="find-button" th:text="#{find}"></button>
+                        </div>
+                    </th>
+                </tr>
+                <tr th1:each="user : ${userList}">
+                    <td th1:text="${user.login}"></td>
+                    <td th1:text="${user.name}"></td>
+                    <td th1:text="${user.birthday}"></td>
+                    <td th1:text="${user.sex}"></td>
+                    <td th1:text="${user.country}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>

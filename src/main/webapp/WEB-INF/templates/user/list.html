@@ -15,7 +15,7 @@
                 <a th:href="${firstDisable} ? '#' : @{'/user/list/'+${prevPage}}">Previous</a>
             </li>
             <li class="next" th:classappend="${lastDisable} ? disabled : null">
-                <a th:href="${firstDisable} ? '#' : @{'/user/list/'+${nextPage}}">Next</a>
+                <a th:href="${lastDisable} ? '#' : @{'/user/list/'+${nextPage}}">Next</a>
             </li>
         </ul>
     </nav>
@@ -47,7 +47,7 @@
                 <a th:href="${firstDisable} ? '#' : @{'/user/list/'+${prevPage}}">Previous</a>
             </li>
             <li class="next" th:classappend="${lastDisable} ? disabled : null">
-                <a th:href="${firstDisable} ? '#' : @{'/user/list/'+${nextPage}}">Next</a>
+                <a th:href="${lastDisable} ? '#' : @{'/user/list/'+${nextPage}}">Next</a>
             </li>
         </ul>
     </nav>

@@ -45,7 +45,7 @@
                         <a th:href="@{/user/list}">list</a>
                     </li>
                     <li>
-                        <a th:href="@{/user/list}">list</a>
+                        <a th:href="@{/user/find}">find</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -56,5 +56,15 @@
 </div>
 <script th:src="@{/resources/js/lib/jquery-2.2.1.min.js}"></script>
 <script th:src="@{/resources/bootstrap-3.3.6/js/bootstrap.min.js}"></script>
+<script th:src="@{/resources/js/main.js}"></script>
+<script th:inline="javascript">
+    var res = {
+        url: {
+            user: {
+                find: [[@{/user/find}]]
+            }
+        }
+    };
+</script>
 </body>
 </html>
