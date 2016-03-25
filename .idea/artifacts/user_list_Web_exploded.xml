@@ -84,6 +84,7 @@
           <element id="library" level="project" name="Maven: ognl:ognl:3.0.6" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:4.0.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.unbescape:unbescape:1.1.2.RELEASE" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.6.5" />
         </element>
       </element>
     </root>

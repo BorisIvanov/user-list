@@ -6,6 +6,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import user.list.entity.UserDtoItem;
@@ -48,12 +49,8 @@ public class UserController {
         return "user/find";
     }
 
-    @RequestMapping(
-            value = "find",
-            method = RequestMethod.POST,
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public String findPost(UserDtoItem userDtoItem, Model model) {
+    @RequestMapping(value = "find", method = RequestMethod.POST)
+    public String findPost(@RequestBody UserDtoItem userDtoItem) {
         return "user/find";
     }
 

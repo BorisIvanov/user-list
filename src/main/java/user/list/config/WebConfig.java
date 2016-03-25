@@ -1,11 +1,16 @@
 package user.list.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -18,6 +23,7 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 
 
@@ -68,7 +74,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         templateResolver.setCacheable(false);
         return templateResolver;
     }
-/*
+
     @Bean
     public JacksonAnnotationIntrospector jacksonAnnIntrospector() {
         return new JacksonAnnotationIntrospector();
@@ -80,16 +86,15 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         result.setAnnotationIntrospector(jacksonAnnIntrospector());
         result.getSerializationConfig().withInsertedAnnotationIntrospector(jacksonAnnIntrospector());
         result.getDeserializationConfig().withInsertedAnnotationIntrospector(jacksonAnnIntrospector());
-        //result.registerModule(new JavaTimeModule());
+        result.registerModule(new JavaTimeModule());
         return result;
-    }*/
-/*
+    }
+
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         MappingJackson2HttpMessageConverter json = new MappingJackson2HttpMessageConverter();
         json.setObjectMapper(jacksonObjectMapper());
         converters.add(json);
-        converters.add(new FormHttpMessageConverter());
-    }*/
+    }
 
 }
