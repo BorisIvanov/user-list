@@ -24,41 +24,44 @@ $.postJSON = function (url, data, callback) {
 };
 
 function find() {
-    var birthday = $("#find-birthday input").val();
-    if (birthday == "") {
-        birthday = null;
-    } else {
+    var birthday = getVal("#find-birthday input");
+    if (birthday) {
         if (!birthdayValidate(birthday)) {
             return false;
         }
     }
 
     var data = {
-        login: $("#find-login").val(),
-        name: $("#find-name").val(),
+        login: getVal("#find-login"),
+        name: getVal("#find-name"),
         birthday: birthday,
-        sex: $("#find-sex").val(),
-        country: $("#find-country").val()
+        sex: getVal("#find-sex"),
+        country: getVal("#find-country")
     };
     $.postJSON(res.url.user.find, data, function (response) {
 
     });
 }
 
+function getVal(selector) {
+    var result = $(selector).val();
+    if (result == "") {
+        result = null;
+    }
+    return result;
+}
+
 function dateValidate(value) {
-    try {
-        var date = value.split("-");
-        var y = parseInt(date[0], 10),
-            m = parseInt(date[1], 10),
-            d = parseInt(date[2], 10);
-        if (isNaN(y) || isNaN(m) || isNaN(d)) {
-            return false;
-        }
-        new Date(y, m - 1, d);
-        return true;
-    } catch (e) {
+    var regEx = /^\d{4}-\d{2}-\d{2}$/;
+    if (!value.match(regEx)) {
         return false;
     }
+    var params = value.split(/[\.\-\/]/);
+    var yyyy = parseInt(params[0], 10);
+    var mm = parseInt(params[1], 10);
+    var dd = parseInt(params[2], 10);
+    var date = new Date(yyyy, mm - 1, dd, 0, 0, 0, 0);
+    return mm === (date.getMonth() + 1) && dd === date.getDate() && yyyy === date.getFullYear();
 }
 
 function birthdayValidate(value) {
