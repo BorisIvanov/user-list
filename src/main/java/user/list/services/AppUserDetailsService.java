@@ -13,6 +13,8 @@ import user.list.entity.UserDtoItem;
 import user.list.entity.UserEntity;
 import user.list.repositories.UserRepository;
 
+import java.util.List;
+
 @Service
 public class AppUserDetailsService implements UserService {
 
@@ -53,4 +55,5 @@ public class AppUserDetailsService implements UserService {
         PageRequest pageRequest = new PageRequest(pageNumber - 1, pageSize, Sort.Direction.ASC, "login");
         return userRepository.findAll(pageRequest);
     }
+
 }
