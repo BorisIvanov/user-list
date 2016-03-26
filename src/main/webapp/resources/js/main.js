@@ -47,30 +47,30 @@ function find() {
             result += "<tr><td>";
             result += item.login + "</td>";
             if (item.name) {
-                result += "<td>" + item.name + "</td>"
+                result += "<td>" + item.name + "</td>";
             } else {
-                result += "<td></td>"
+                result += "<td></td>";
             }
             if (item.birthday) {
-                result += "<td>" + item.birthday + "</td>"
+                result += "<td>" + item.birthday + "</td>";
             } else {
-                result += "<td></td>"
+                result += "<td></td>";
             }
-            if (item.sex) {
-                if (item.sex == 0) {
-                    result += "<td>" + res.label.sex.M + "</td>"
+            if (item.sexAsString) {
+                if (item.sexAsString == "0") {
+                    result += "<td>" + res.label.sex.M + "</td>";
                 } else {
-                    result += "<td>" + res.label.sex.F + "</td>"
+                    result += "<td>" + res.label.sex.F + "</td>";
                 }
             } else {
-                result += "<td></td>"
+                result += "<td></td>";
             }
             if (item.country) {
-                result += "<td>" + item.country + "</td>"
+                result += "<td>" + item.country + "</td>";
             } else {
-                result += "<td></td>"
+                result += "<td></td>";
             }
-            result += "</tr>"
+            result += "</tr>";
         }
         $("#find-table tbody").append(result);
     });

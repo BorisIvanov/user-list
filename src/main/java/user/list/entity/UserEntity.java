@@ -117,6 +117,13 @@ public class UserEntity implements UserDetails {
         return sex;
     }
 
+    public String getSexAsString() {
+        if (sex != null) {
+            return sex.toString();
+        }
+        return null;
+    }
+
     public void setSex(Byte sex) {
         this.sex = sex;
     }

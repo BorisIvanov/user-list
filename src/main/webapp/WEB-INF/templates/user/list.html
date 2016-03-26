@@ -34,7 +34,11 @@
                     <td th:text="${user.login}"></td>
                     <td th:text="${user.name}"></td>
                     <td th:text="${user.birthday}"></td>
-                    <td th:text="${user.sex}"></td>
+                    <td th:switch="${user.sexAsString}">
+                        <span th:case="0" th:text="#{sex.m}"></span>
+                        <span th:case="1" th:text="#{sex.f}"></span>
+                        <span th:case="*"></span>
+                    </td>
                     <td th:text="${user.country}"></td>
                 </tr>
             </table>
