@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import user.list.entity.UserDtoItem;
 import user.list.entity.UserEntity;
 import user.list.services.UserService;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -50,8 +52,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "find", method = RequestMethod.POST)
-    public String findPost(@RequestBody UserDtoItem userDtoItem) {
-        return "user/find";
+    @ResponseBody
+    public List<UserEntity> findPost(@RequestBody UserDtoItem userDtoItem) {
+        return userService.find(userDtoItem);
     }
 
 }

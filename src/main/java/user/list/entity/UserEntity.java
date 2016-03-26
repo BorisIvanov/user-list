@@ -1,5 +1,7 @@
 package user.list.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,6 +17,7 @@ import java.util.Collection;
 
 @Entity
 public class UserEntity implements UserDetails {
+    @JsonIgnore
     @Id
     @GeneratedValue
     Long id;
@@ -22,10 +25,12 @@ public class UserEntity implements UserDetails {
     @NotNull
     @Size(min = 6, max = 16)
     private String login;
+    @JsonIgnore
     @NotNull
     private String password;
     @Size(max = 30)
     private String name;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate birthday;
     private Byte sex;
@@ -48,6 +53,7 @@ public class UserEntity implements UserDetails {
         this.login = login;
     }
 
+    @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -63,21 +69,25 @@ public class UserEntity implements UserDetails {
         return getLogin();
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isEnabled() {
         return true;

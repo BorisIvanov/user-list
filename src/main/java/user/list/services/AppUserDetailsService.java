@@ -56,4 +56,7 @@ public class AppUserDetailsService implements UserService {
         return userRepository.findAll(pageRequest);
     }
 
+    public List<UserEntity> find(UserDtoItem params){
+        return userRepository.find(params);
+    }
 }
