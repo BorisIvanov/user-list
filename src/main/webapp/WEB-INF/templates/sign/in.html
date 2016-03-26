@@ -17,6 +17,14 @@
         </div>
     </div>
 
+    <div class="row" th:if="${session[SPRING_SECURITY_LAST_EXCEPTION] != null and session[SPRING_SECURITY_LAST_EXCEPTION].message != null}">
+        <div class="col-md-offset-2 col-md-8">
+            <div class="alert alert-danger" role="alert">
+                <strong th:text="#{SPRING_SECURITY_LAST_EXCEPTION}"></strong>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-6">
             <form class="form-horizontal" method="POST" th:action="@{/sign/in}">
