@@ -11,7 +11,8 @@
 
     <div class="row">
         <div class="col-md-12">
-            <table class="table table-condensed">
+            <table class="table table-condensed" id="find-table">
+                <thead>
                 <tr>
                     <th th:text="#{login}"></th>
                     <th th:text="#{name}"></th>
@@ -39,9 +40,9 @@
                     <th>
                         <div class="form-group">
                             <select class="form-control" id="find-sex">
-                                <option value="null">None</option>
-                                <option value="0">M</option>
-                                <option value="1">F</option>
+                                <option value="null" th:text="#{sex.none}">None</option>
+                                <option value="0" th:text="#{sex.m}">M</option>
+                                <option value="1" th:text="#{sex.f}">F</option>
                             </select>
                         </div>
                     </th>
@@ -56,13 +57,10 @@
                         </div>
                     </th>
                 </tr>
-                <tr th1:each="user : ${userList}">
-                    <td th1:text="${user.login}"></td>
-                    <td th1:text="${user.name}"></td>
-                    <td th1:text="${user.birthday}"></td>
-                    <td th1:text="${user.sex}"></td>
-                    <td th1:text="${user.country}"></td>
-                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
             </table>
         </div>
     </div>

@@ -39,7 +39,40 @@ function find() {
         country: getVal("#find-country")
     };
     $.postJSON(res.url.user.find, data, function (response) {
+        $("#find-table tbody tr").remove();
+        var result = "";
+        for (var i = 0; i < response.length; i++) {
+            var item = response[i];
 
+            result += "<tr><td>";
+            result += item.login + "</td>";
+            if (item.name) {
+                result += "<td>" + item.name + "</td>"
+            } else {
+                result += "<td></td>"
+            }
+            if (item.birthday) {
+                result += "<td>" + item.birthday + "</td>"
+            } else {
+                result += "<td></td>"
+            }
+            if (item.sex) {
+                if (item.sex == 0) {
+                    result += "<td>" + res.label.sex.M + "</td>"
+                } else {
+                    result += "<td>" + res.label.sex.F + "</td>"
+                }
+            } else {
+                result += "<td></td>"
+            }
+            if (item.country) {
+                result += "<td>" + item.country + "</td>"
+            } else {
+                result += "<td></td>"
+            }
+            result += "</tr>"
+        }
+        $("#find-table tbody").append(result);
     });
 }
 
