@@ -12,10 +12,10 @@
     <nav>
         <ul class="pager">
             <li class="previous" th:classappend="${firstDisable} ? disabled : null">
-                <a th:href="${firstDisable} ? '#' : @{'/user/list/'+${prevPage}}">Previous</a>
+                <a th:href="${firstDisable} ? '#' : @{'/user/list/'+${prevPage}}" th:text="#{previous}"></a>
             </li>
             <li class="next" th:classappend="${lastDisable} ? disabled : null">
-                <a th:href="${lastDisable} ? '#' : @{'/user/list/'+${nextPage}}">Next</a>
+                <a th:href="${lastDisable} ? '#' : @{'/user/list/'+${nextPage}}" th:text="#{next}"></a>
             </li>
         </ul>
     </nav>
@@ -48,10 +48,10 @@
     <nav>
         <ul class="pager">
             <li class="previous" th:classappend="${firstDisable} ? disabled : null">
-                <a th:href="${firstDisable} ? '#' : @{'/user/list/'+${prevPage}}">Previous</a>
+                <a th:href="${firstDisable} ? '#' : @{'/user/list/'+${prevPage}}" th:text="#{previous}"></a>
             </li>
             <li class="next" th:classappend="${lastDisable} ? disabled : null">
-                <a th:href="${lastDisable} ? '#' : @{'/user/list/'+${nextPage}}">Next</a>
+                <a th:href="${lastDisable} ? '#' : @{'/user/list/'+${nextPage}}" th:text="#{next}"></a>
             </li>
         </ul>
     </nav>

@@ -1,9 +1,7 @@
 package user.list.config;
 
-import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import javax.servlet.Filter;
 import javax.servlet.ServletRegistration.Dynamic;
 
 
@@ -29,8 +27,5 @@ public class DispatcherServletInitializer extends AbstractAnnotationConfigDispat
         registration.setInitParameter("dispatchOptionsRequest", "true");
         registration.setInitParameter("throwExceptionIfNoHandlerFound", "true");
     }
-/*
-    protected Filter[] getServletFilters() {
-        return new Filter[]{new CharacterEncodingFilter("UTF-8")};
-    }*/
+
 }

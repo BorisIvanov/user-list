@@ -59,19 +59,20 @@ public class SignControllerTest {
         builder.param("birthday", "2016-01-21");
         builder.param("sex", "0");
         builder.param("country", "country");
+        UserEntity userEntity = userRepository.readByLogin("awesome-login");
+        if (userEntity != null) {
+            userRepository.delete(userEntity.getId());
+        }
         ResultActions resultActions = mockMvc.perform(builder);
         //resultActions.andDo(MockMvcResultHandlers.print());
         resultActions.andExpect(MockMvcResultMatchers.status().is(302));
 
-        List<UserEntity> userList = userRepository.findAll();
-        assertTrue(userList.size() == 1);
+        userEntity = userRepository.readByLogin("awesome-login");
+        assertTrue(userEntity != null);
 
         resultActions = mockMvc.perform(builder);
         //resultActions.andDo(MockMvcResultHandlers.print());
         resultActions.andExpect(MockMvcResultMatchers.status().isOk());
-
-        userList = userRepository.findAll();
-        assertTrue(userList.size() == 1);
     }
 
 }

@@ -29,18 +29,20 @@ public class UserRepositoryTest {
 
         LocalDate localDate = LocalDate.of(2012, 12, 31);
 
-        try {
-            UserEntity userEntity = new UserEntity();
-            userEntity.setLogin("login--login");
-            userEntity.setPassword("qazwsx");
-            userEntity.setCountry("Country-Country");
-            userEntity.setName("Name-Name");
-            userEntity.setBirthday(localDate);
-            userEntity.setSex(Byte.valueOf("2"));
-            userRepository.save(userEntity);
-        } catch (Exception e) {
-
+        UserEntity userEntity = userRepository.readByLogin("login--login");
+        if (userEntity != null) {
+            userRepository.delete(userEntity.getId());
         }
+
+        userEntity = new UserEntity();
+        userEntity.setLogin("login--login");
+        userEntity.setPassword("qazwsx");
+        userEntity.setCountry("Country-Country");
+        userEntity.setName("Name-Name");
+        userEntity.setBirthday(localDate);
+        userEntity.setSex(Byte.valueOf("2"));
+        userRepository.save(userEntity);
+
         UserDtoItem userDtoItem = new UserDtoItem();
         userDtoItem.setLogin("login");
         userDtoItem.setCountry("Country");
